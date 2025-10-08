@@ -29,7 +29,7 @@ levando também em consideração que, em algumas versões, nao tem um suporte b
 
 3- PROCESSANDO A IMAGEM:
 
-    result = ocr.predict('pasta/sua_imagem.jpg')
+    result = ocr.ocr('pasta/sua_imagem.jpg')
 
   - O OCR processa a imagem
   - ('pasta/sua_imagem.jpg') é onde voce vai colocar o caminho do arquivo
@@ -45,25 +45,24 @@ levando também em consideração que, em algumas versões, nao tem um suporte b
 
 
     4- EXTRAINDO TEXTOS:
-     -     textos = result[0]['rec_texts']
-            confiancas = result[0]['rec_scores']
+     -       if result and result[0]:
+                for i, line in enumerate(result[0]):
+                    texto = line[1][0]      # Texto reconhecido
+                    confianca = line[1][1]  # Confiança (0 a 1)
+                    print(f"{i}: '{texto}' - {confianca:.1%}")
 
-    - "result[0]" = refere-se a primeira imagem, no caso, so usei uma
-    - "textos" = lista de todos os textos que foram identificados pelo OCR
-    - "confiancas" = lista com a confiança, porcentagem de acerto, para cada reconhecimento
+    -"texto = line[1][0]" = Texto reconhecido
+    -"confianca = line[1][1]" = Confiança (0 a 1)
    
 
     5- MOSTRANDO RESULTADOS:
-    -       print("✅ TEXTO RECONHECIDO:")
-    -       print("=" * 40)
-              for i, (texto, confianca) in enumerate(zip(textos, confiancas)):
-                  print(f"{i}: '{texto}' - {confianca:.1%}")
+    -      print(f"{i}: '{texto}' - {confianca:.1%}")
 
-          print(f"\n🎯 Total: {len(textos)} textos reconhecidos")
-    -
-    - "enumerate" = cria um índice para numerar cada texto detectado
-    - "zip(textos, confiancas)"= junta cada texto com sua porcentagem de chance de acerto
+    -       for i, line in enumerate(result[0]):
+
     - "{confianca:.1%}"= formata o valor como porcentagem com uma casa decimal
+    - "enumerate" = cria um índice para numerar cada texto detectado
+    - 
       
     - EXEMPLO (fictício):
 
