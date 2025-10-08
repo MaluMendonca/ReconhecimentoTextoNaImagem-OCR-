@@ -2,7 +2,7 @@ from paddleocr import PaddleOCR
 
 ocr = PaddleOCR(lang='en') 
 
-result = ocr.predict('Pasta/sua-imagem.jpg') #aqui voce troca pelo caminho da sua imagem
+result = ocr.ocr('Pasta/sua-imagem.jpg') #aqui voce troca pelo caminho da sua imagem
 
 # Extrair textos 
 textos = result[0]['rec_texts'] 
