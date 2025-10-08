@@ -75,5 +75,7 @@ levando também em consideração que, em algumas versões, nao tem um suporte b
      - 0: 'Hello' - 98.7% 
      - 1: 'World' - 95.2% 
      - 🎯 Total: 2 textos reconhecidos
-    
-     - Espero ter sido útil! ♡‧₊˚
+
+
+
+Espero ter sido útil! ♡‧₊˚
