@@ -1,4 +1,4 @@
-from paddleocr import PaddleOCR 
+from paddleocr import PaddleOCR
 
 ocr = PaddleOCR(lang='en') 
 
