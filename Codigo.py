@@ -1,15 +1,18 @@
 from paddleocr import PaddleOCR
 
-ocr = PaddleOCR(lang='en') 
+ocr = PaddleOCR(lang='en')
 
-result = ocr.ocr('Pasta/sua-imagem.jpg') #aqui voce troca pelo caminho da sua imagem
+result = ocr.ocr('Pictures/testar.jpeg')
 
-# Extrair textos 
-textos = result[0]['rec_texts'] 
-confiancas = result[0]['rec_scores'] 
-print("✅ TEXTO RECONHECIDO:") 
-print("=" * 40) 
+print("✅ TEXTO RECONHECIDO:")
+print("=" * 40)
 
-for i, (texto, confianca) in enumerate(zip(textos, confiancas)): 
-  print(f"{i}: '{texto}' - {confianca:.1%}") 
-print(f"\n🎯 Total: {len(textos)} textos reconhecidos")
+if result and result[0]:
+    for i, line in enumerate(result[0]):
+        texto = line[1][0]  # Texto reconhecido
+        confianca = line[1][1]  # Confiança
+        print(f"{i}: '{texto}' - {confianca:.1%}")
+
+    print(f"\n🎯 Total: {len(result[0])} textos reconhecidos")
+else:
+    print("❌ Nenhum texto encontrado")
